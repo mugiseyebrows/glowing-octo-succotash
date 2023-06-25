@@ -9,10 +9,12 @@ jobs:
         update: false
         install: openssh
     - shell: msys2 {0}
-      run: pwd ~
+      run: find ~
     - shell: cmd
       run: net user sshd /add /fullname:"Privilege separation user for sshd" /homedir:C:\msys64\var\empty /active:no
     - shell: msys2 {0}
       run: ssh-keygen -A
     - shell: msys2 {0}
-      run: /usr/bin/sshd
+      run: /usr/bin/sshd -p 2222
+    - shell: msys2 {0}
+      run: ssh test@127.0.0.1 -p 2222
