@@ -15,6 +15,16 @@ jobs:
     - shell: msys2 {0}
       run: ssh-keygen -A
     - shell: msys2 {0}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        echo "$SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
+        ls -lah ~/.ssh/
+    - shell: msys2 {0}
       run: /usr/bin/sshd -p 2222
     - shell: msys2 {0}
-      run: ssh test@127.0.0.1 -p 2222
+      run: |
+        ssh -o "StrictHostKeyChecking=no" runneradmin@127.0.0.1
+        ssh runneradmin@127.0.0.1 -p 2222
+    
