@@ -24,6 +24,7 @@ jobs:
         chmod 600 ~/.ssh/authorized_keys
         echo "$SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
         ls -lah ~/.ssh/
+        md5sum ~/.ssh/*
     - shell: msys2 {0}
       run: /usr/bin/sshd
     - shell: msys2 {0}
