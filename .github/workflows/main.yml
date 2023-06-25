@@ -20,7 +20,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/authorized_keys
+        echo "$SSH_PUBLIC_KEY" > ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/authorized_keys
         echo "$SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
         ls -lah ~/.ssh/
