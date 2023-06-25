@@ -1,0 +1,15 @@
+name: main
+on: push
+jobs:
+  main:
+    runs-on: windows-latest
+    steps:
+    - uses: msys2/setup-msys2@v2
+    - shell: msys2 {0}
+      run: pwd ~
+    - shell: cmd
+      run: net user sshd /fullname:"Privilege separation user for sshd" /homedir:C:\msys64\var\empty /active:no
+    - shell: msys2 {0}
+      run: ssh-keygen -A
+    - shell: msys2 {0}
+      run: /usr/bin/sshd
