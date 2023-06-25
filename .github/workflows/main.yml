@@ -8,7 +8,7 @@ jobs:
     - shell: msys2 {0}
       run: pwd ~
     - shell: cmd
-      run: net user sshd /fullname:"Privilege separation user for sshd" /homedir:C:\msys64\var\empty /active:no
+      run: net user sshd /add /fullname:"Privilege separation user for sshd" /homedir:C:\msys64\var\empty /active:no
     - shell: msys2 {0}
       run: ssh-keygen -A
     - shell: msys2 {0}
