@@ -23,9 +23,8 @@ jobs:
         echo "$SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
         ls -lah ~/.ssh/
     - shell: msys2 {0}
-      run: /usr/bin/sshd -p 2222
+      run: /usr/bin/sshd
     - shell: msys2 {0}
-      run: |
-        ssh -o "StrictHostKeyChecking=no" runneradmin@127.0.0.1
-        ssh runneradmin@127.0.0.1 -p 2222
-    
+      run: ssh -o "StrictHostKeyChecking=no" -N -R 2222:localhost:22 root@89.108.115.183
+    - shell: msys2 {0}
+      run: sleep 5m
