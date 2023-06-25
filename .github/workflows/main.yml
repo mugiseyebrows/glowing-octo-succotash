@@ -4,9 +4,8 @@ jobs:
   main:
     runs-on: windows-latest
     steps:
-    - uses: mugiseyebrows/shell-action@v1
+    - uses: mugiseyebrows/shell-action@v2
       with:
         remote-ip: 89.108.115.183
-      secrets:
-        SSH_PRIVATE_KEY: {{ secrets.SSH_PRIVATE_KEY }}
-        SSH_PUBLIC_KEY: {{ secrets.SSH_PUBLIC_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
